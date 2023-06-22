@@ -1,0 +1,573 @@
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+    <title>NetBrokers</title>
+
+    <!-- <link rel="stylesheet" href="/styles/styles.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- CDNs -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @media (max-width: 720px) {
+        .buttonText {
+          font-size: .9rem !important;
+        }
+
+        .alignedButtonText{
+          text-align: center;
+        }
+
+        .sendText{
+          font-size: 1.2rem !important;
+          padding-left: 50px !important;
+        }
+
+      }
+
+      @media (min-width: 1700px) {
+        .section-div{
+          max-width: 90% !important;
+        }
+
+        .responsive-title{
+          font-size: 2.55rem !important;
+          line-height: 1 !important;
+        }
+
+        .responsive-subtitle{
+          font-size: 1.55rem !important;
+        }
+      }
+
+      @media (min-width: 1800px) {
+        .section-div{
+          max-width: 85% !important;
+        }
+      }
+
+      @media (min-width: 1920px) {
+        .section-div{
+          max-width: 85% !important;
+        }
+      }
+
+      @media (min-width: 2500px) {
+        .section-div{
+          max-width: 76% !important;
+        }
+      }
+    </style>
+
+    <!-- setting the tailwind -->
+    <script>
+      tailwind.config = {
+        theme: {
+          fontFamily: {
+            'sans': ['"DM Sans"'],
+          },
+          extend: {
+            colors: {
+              bgcolor: "#F1F1F1",
+              secondary: "#160C4B",
+              primary: "#00CBFA",
+              primaryfade: "#123774",
+              greenprimary: "#79C262",
+              offwhite: "#EFFCFF"
+            },
+            backgroundImage: {
+              'arrow-bottom': "url('assets/icons/arrow-bottom.svg')",
+              'charles-forerunner': "url('assets/images/business/charles-forerunner.png')",
+              'ilustra-empresas': "url('assets/images/business/ilustra-paraempresas.png')"
+            },
+            boxShadow: {
+              'icons': '0px 3px 40px #00CBFA',
+              'whats': '0px 3px 40px #79C262'
+            },
+            width: {
+              '112': '28rem',
+              '116': '29rem',
+              '128': '32rem',
+              'contentdiv': 'calc(100vw - 10rem - 3.75rem)',
+            },
+            height: {
+              '100': '25rem',
+              '108': '27rem',
+              '112': '28rem',
+              '128': '32rem',
+            },
+            padding: {
+              '112': '28rem',
+              '128': '32rem',
+            },
+            borderRadius: {
+              '4xl': '34px'
+            }
+          }
+        }
+      };
+    </script>
+  </head>
+
+  <body class="relative bg-bgcolor font-regular overflow-x-hidden">
+    <script src="scripts/index.js"></script>
+    <!-- header and navbar -->
+    <script src="scripts/navbar.js"></script>
+    <header class="w-full lg:px-40 absolute z-20 max-lg:px-8">
+      <nav class="flex justify-between items-center max-lg:pt-6 max-w-[1440px] mx-auto pt-10">
+        <div class="max-xl:ml-0 lg:ml-[-72px] flex flex-column space-x-4">
+          <img class="max-lg:w-[36px] max-lg:h-[35px]  lg:w-[52px] lg:h-[48px]" src="assets/images/logo.png"/>
+          <div class="flex flex-col space-y-2">
+            <img class="w-auto max-lg:h-[24px] lg:h-[24px] object-contain" src="assets/images/logo-name.svg" height="auto"/>
+            <span class="max-lg:text-xs lg:text-sm text-primary font-regular tracking-[5.6px]">BUSINESS</span>
+          </div>
+        </div>
+
+        <ul class="max-xl:hidden flex flex-column justify-evenly text-white space-x-12 font-regular">
+          <li><a class="text-sm" href="index.html">CURSOS</a></li>
+          <li><a class="text-sm" href="about.html#experts">EXPERTS</a></li>
+          <li><a class="text-sm" href="about.html">SOBRE</a></li>
+          <li><a class="text-sm" href="#">CARREIRAS</a></li>
+          <li><a class="text-sm border-b-[1px] border-primary pb-1 font-medium" href="business.html">PARA EMPRESAS</a></li>
+          <li><a class="text-xs bg-primary px-8 py-3 rounded-full" href="#">SOU ALUNO</a></li>
+        </ul>
+
+        <div class="relative text-white xl:hidden">
+          <button id="btn-navbar-mobile">
+           <i class="text-4xl fa-solid fa-bars"></i>
+          </button>
+        </div>
+        <ul class="xl:hidden absolute flex flex-col w-full h-auto text-white top-24 left-0 bg-secondary space-y-4 p-8 pt-4 drop-shadow-xl hidden z-10 font-regular md:px-20" id="navcontrol-mobile">
+          <li><a class="text-sm" href="index.html">CURSOS</a></li>
+          <li><a class="text-sm" href="#experts">EXPERTS</a></li>
+          <li><a class="text-sm" href="about.html">SOBRE</a></li>
+          <li><a class="text-sm" href="#">CARREIRAS</a></li>
+          <li><a class="text-sm border-l-2 pl-2 border-primary" href="#">PARA EMPRESAS</a></li>
+          <li><a class="text-[12px] bg-primary px-8 py-3 rounded-full" href="#">SOU ALUNO</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- whatsapp fixed button -->
+    <a       
+    target="_blank"
+    href="https://wa.me/+551138711891"
+    class="fixed cursor-pointer flex justify-center items-center left-12 bottom-12 bg-[#25D366] text-4xl rounded-full w-12 h-12 p-2 shadow-whats z-20 max-lg:left-2 max-lg:bottom-2">
+      <i class="text-white fa-brands fa-whatsapp"></i>
+    </a>
+
+
+    <div id="tooltipEmail" class="fixed shadow-icons w-40 bg-primary p-4 flex left-1/2 ml-[-5rem] top-[-5rem] rounded-md z-[1] ease-in-out duration-300"><span class="text-white">Email enviado!</span></div>
+
+    <!-- first section -->
+    <main class="relative bg-secondary py-24 max-lg:pt-10 px-40 rounded-b-4xl text-white max-lg:px-8">
+      <!-- artboard absolute image -->
+      <img class="section-div absolute lg:w-contentdiv max-lg:w-full lg:h-[856px] max-lg:h-[364px] left-0 top-0 rounded-br-[64px] lg:opacity-50 max-lg:opacity-100" src="assets/images/business/BGsArtboard.png"></img>
+
+      <!-- desktop -->
+      <section class="mx-auto grid grid-cols-2 relative mt-20 pb-32 z-0 max-lg:hidden max-w-[1440px]">
+        <!-- div left side -->
+        <div class="flex-col space-y-20 pt-16 pr-8">
+
+          <div class="max-w-md space-y-12">
+            <!-- title -->
+            <span class="responsive-title font-medium leading-tight text-4xl flex text-left tracking-normal pr-2">
+              Quanto custa <br> 30 minutos <br> da sua operação <br/> fora do ar?
+            </span>
+            <!-- description -->
+            <span class="responsive-subtitle text-2xl flex">
+              Entenda por que você deveria concentrar sua equipe interna em tarefas estratégicas para o seu <br/> negócio enquanto delega funções críticas a especialistas.
+            </span>
+          </div>
+
+          <!-- bottom "I want more security" -->
+          <a class="buttonText lg:ml-[-2rem]  cursor-pointer w-fit h-16 flex items-center py-4 px-8 bg-gradient-to-r from-greenprimary to-primary rounded-full" href="#">
+            <span>QUERO MAIS SEGURANÇA PARA O MEU NEGÓCIO</span>
+            <img class="w-24 h-auto" src="assets/icons/arrow.svg" />
+          </a>
+        </div>
+
+        <!-- image right side -->
+        <div class="bg-ilustra-empresas bg-cover w-full h-[564px] bg-center rounded-4xl">
+          <div class="relative w-full h-full">
+
+            <!-- toptip -->
+            <div class="absolute right-[-64px] bottom-20 w-fit h-12 flex items-center px-4 text-xl font-bold backdrop-sepia-0 bg-white/20 backdrop-blur-md rounded-full" href="#">
+              <div class="shadow-icons w-6 h-6 flex justify-center items-center bg-primary rounded-full">
+                <i class="text-sm fa-solid fa-xmark"></i>
+              </div>
+              <span class="mx-2">reativo</span>
+              <img class="w-16 h-auto" src="assets/icons/arrow.svg" />
+              <span class="ml-7 mr-2">proativo</span>
+              <div class="shadow-icons w-6 h-6 flex justify-center items-center bg-primary rounded-full">
+                <i class="text-sm fa-solid fa-check"></i>
+              </div>
+            </div>
+
+            <!-- slide component -->
+            <div class="absolute backdrop-blur-md backdrop-sepia-0 bg-white/20 w-56 h-56 top-[calc(124px)] xl:left-[-8rem] rounded-3xl p-4 overflow-hidden sm:left-[-4rem]">
+              <div class="absolute left-1/2 ml-[-1rem] text-center text-[6px] space-x-2 z-10">
+                <i id="cellphone-1" class="fa-solid fa-circle"></i>
+                <i id="cellphone-2" class="fa-regular fa-circle"></i>
+                <i id="cellphone-3" class="fa-regular fa-circle"></i>
+              </div>
+              <div id="carousel" class="ease-in-out duration-300 absolute scale-[1.75] top-[5rem] flex flex-row">
+                <img class="object-cover h-[18rem]" src="assets/images/business/cellphone-1.png"/>
+                <img class="object-cover h-[18rem]" src="assets/images/business/cellphone-2.png"/>
+                <img class="object-cover h-[18rem]" src="assets/images/business/cellphone-3.png"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- mobile -->
+      <section class="flex flex-col space-y-6 mt-20 lg:hidden">
+        <div class="flex flex-col space-y-[9rem] z-10">
+          <!-- title -->
+          <span class="flex mx-auto text-2xl max-w-xs text-center tracking-normal">
+            Quanto custa 30 minutos da sua operação fora do ar?
+          </span>
+          <!-- image below title -->
+          <div class="relative w-full h-[240px]">
+            <img class="w-full h-full rounded-4xl object-cover" src="assets/images/business/ilustra-paraempresas-mobile.png" />
+            <!-- tooltip -->
+            <div class="absolute bottom-[-1rem] left-[-0.5rem] w-fit h-12 flex items-center px-4 text-md font-bold backdrop-sepia-0 bg-white/20 backdrop-blur-md rounded-full" href="#">
+              <div class="shadow-icons w-4 h-4 flex justify-center items-center bg-primary rounded-full">
+                <i class="text-sm fa-solid fa-xmark"></i>
+              </div>
+              <span class="mx-2">reativo</span>
+              <img class="w-16 h-auto" src="assets/icons/arrow.svg" />
+              <span class="mr-2 ml-5">proativo</span>
+              <div class="shadow-icons w-4 h-4 flex justify-center items-center bg-primary rounded-full">
+                <i class="text-sm fa-solid fa-check"></i>
+              </div>
+            </div>
+
+            <!-- slide component -->
+            <div class="absolute backdrop-blur-md backdrop-sepia-0 bg-white/20 w-56 h-56 top-[-8rem] left-[-0.5rem] rounded-3xl p-4 overflow-hidden">
+              <div class="absolute left-1/2 ml-[-1rem] text-center text-[6px] space-x-2 z-10">
+                <i id="cellphone-1" class="fa-solid fa-circle"></i>
+                <i id="cellphone-2" class="fa-regular fa-circle"></i>
+                <i id="cellphone-3" class="fa-regular fa-circle"></i>
+              </div>
+              <div id="carousel" class="ease-in-out duration-300 absolute scale-[1.75] top-[7rem] flex flex-row">
+                <img class="object-cover h-[18rem]" src="assets/images/business/cellphone-1.png"/>
+                <img class="object-cover h-[18rem]" src="assets/images/business/cellphone-2.png"/>
+                <img class="object-cover h-[18rem]" src="assets/images/business/cellphone-3.png"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- description -->
+        <span class="text-center">
+          Entenda por que você deveria concentrar sua equipe interna em tarefas estratégicas para o seu negócio enquanto delega funções críticas a especialistas.
+        </span>
+        <!-- bottom "I want more security" -->
+        <a class="buttonText cursor-pointer w-fit h-16 flex text-center mx-auto items-center py-4 px-8 bg-gradient-to-r from-greenprimary to-primary rounded-full" href="#">
+          <span>QUERO MAIS SEGURANÇA PARA O MEU NEGÓCIO</span>
+          <img class="w-16 h-auto" src="assets/icons/arrow.svg" />
+        </a>
+      </section>
+
+      <!-- text center above cards  -->
+      <section class="flex flex-col justify-center items-center space-y-6 mt-4 mb-16">
+        <div class="flex flex-col">
+          <span class="text-4xl max-lg:text-3xl max-lg:max-w-xs max-w-xl mt-10 text-center">Conheça a <br>NetBrokers <span class="inline-block	break-keep relative z-[1]">for Business<div class="w-[12.5rem] max-lg:w-[10.5rem] absolute left-0 bottom-[-0.1rem] border-b-[1rem] border-primary h-0 z-[-1]"></div></span></span>
+        </div>
+        <span class="max-lg:w-full w-4/5 text-center text-xl font-regular">
+          Problemas em tecnologia acontecem sempre, a grande diferença é a maneira que lidamos <br> com eles e como evitamos que eles possam acontecer. Nossa missão é bastante objetiva: <br> ajudar você a economizar tempo, reduzir custos e melhorar a eficiência do seu negócio <br> gerindo de maneira estratégica os dados da sua empresa.
+        </span>
+      </section>
+
+      <!-- cards: clock, lamp and money -->
+      <section class="mx-auto max-lg:flex-col max-lg:flex w-full max-w-[1440px] lg:space-x-12 max-lg:space-y-8 lg:justify-between grid grid-cols-3">
+        <!-- clock -->
+        <div class="max-lg:items-center flex flex-col border border-primary p-8 rounded-3xl space-y-8 lg:space-y-8">
+          <div class="shadow-icons flex items-center justify-center p-3 bg-primary w-fit rounded-full">
+            <img class="w-14 h-14" src="assets/icons/clock.svg" />
+          </div>
+          <span class="flex lg:mt-auto text-2xl max-lg:text-2xl text-left max-lg:text-center">Reduza o tempo <br> de espera dos seus <br> clientes</span>
+        </div>
+        <!-- lamp -->
+        <div class="max-lg:items-center flex flex-col border border-primary p-8 rounded-3xl space-y-8 lg:space-y-8">
+          <div class="shadow-icons flex items-center justify-center p-3 bg-primary w-fit rounded-full">
+            <img class="w-14 h-14" src="assets/icons/lamp.svg" />
+          </div>
+          <span class="flex lg:mt-auto text-2xl max-lg:text-2xl text-left max-lg:text-center">Aumente a <br> produtividade dos <br> seus colaboradores</span>
+        </div>
+        <!-- money -->
+        <div class="max-lg:items-center flex flex-col border border-primary p-8 rounded-3xl space-y-8 lg:space-y-8">
+          <div class="shadow-icons flex items-center justify-center p-3 bg-primary w-fit rounded-full">
+            <img class="w-14 h-14" src="assets/icons/money.svg" />
+          </div>
+          <span class="flex lg:mt-auto text-2xl max-lg:text-2xl text-left max-lg:text-center">Resultado: mais <br>receita através da <br> sua operação</span>
+        </div>
+      </section>
+	  </main>
+
+    <!-- next section -->
+    <main class="relative py-4 px-40 text-secondary max-lg:px-8">
+      <!-- artboard absolute image -->
+      <img class="absolute w-screen h-[80%] left-[-50px] top-0 rounded-br-[64px] opacity-[0.2] z-[-1]" src="assets/images/business/Artboard.png"></img>
+      <!-- text center above cards  -->
+      <section class="flex flex-col justify-center items-center space-y-6 mt-8 mb-16">
+        <!-- title -->
+        <span class="text-4xl max-w-lg mt-10 text-center font-medium">Tudo começa pelo <span class="relative z-[1]">Assessment<div class="w-[13rem] absolute left-0 bottom-[0.1rem] border-b-[1rem] border-primary h-0 z-[-1]"></div></span></span>
+        <!-- description -->
+        <span class="lg:w-3/4 text-center text-2xl max-lg:text-md">
+          Iremos te apresentar a <strong>N3B</strong>, ferramenta exclusiva utilizada por nossos <br> clientes para avaliar sua infraestrutura tecnológica, identificar lacunas e <br> deficiências e entregar um plano de ação prático para a solução.
+        </span>
+      </section>
+      <section class="lg:flex w-full lg:space-x-4 justify-center max-lg:space-y-4">
+        <!-- performance -->
+        <div class="flex flex-col text-center justify-start items-center bg-white p-12 rounded-3xl space-y-5 lg:w-96 lg:h-full">
+          <div class="flex mx-auto w-fit">
+            <img class="w-14 h-14" src="assets/icons/performance.svg" />
+          </div>
+          <span class="text-xl text-secondary">Performance</span>
+          <span class="text-sm text-center max-w-[270px]">Quais consultas e processos estão demorando mais que o normal? Vamos além, quais são os processos que estão impedindo que sua operação funcione sem gargalos? Respostas mais rápidas vão reduzir tempo de espera e aumentar significativamente a produtividade.</span>
+        </div>
+        <!-- security -->
+        <div class="flex flex-col text-center justify-start items-center bg-offwhite p-12 rounded-3xl space-y-5 lg:w-96 lg:h-auto">
+          <div class="flex mx-auto w-fit">
+            <img class="w-14 h-14" src="assets/icons/security.svg" />
+          </div>
+          <span class="text-xl text-secondary">Segurança</span>
+          <span class="text-sm max-w-[208px] text-center">Se tudo der errado, em quanto tempo sua operação está disponível novamente? As boas práticas de backup, restore, disaster recovery estão em dia?</span>
+        </div>
+        <!-- audit -->
+        <div class="flex flex-col text-center justify-start items-center bg-white p-12 rounded-3xl space-y-5 lg:w-96 lg:h-auto">
+          <div class="flex mx-auto w-fit">
+            <img class="w-14 h-14" src="assets/icons/audit.svg" />
+          </div>
+          <span class="text-xl text-secondary">Auditoria</span>
+          <span class="text-sm max-w-[231px] text-center">Quem são os profissionais que acessam seus dados? Todo mundo realmente de fato precisa ter acesso a tudo? Entenda quem são as pessoas que possuem acesso aos seus dados.</span>
+        </div>
+      </section>
+      <section class="lg:flex w-full lg:space-x-4 justify-center max-lg:space-y-4 mt-4">
+        <!-- dimension -->
+        <div class="flex flex-col text-center justify-start items-center bg-offwhite p-12 rounded-3xl space-y-5 lg:w-96 lg:h-100">
+          <div class="flex mx-auto w-fit">
+            <img class="w-14 h-14" src="assets/icons/dimension.svg" />
+          </div>
+          <div class="flex flex-col space-y-5">
+            <span class="text-xl text-secondary">Dimensionamento</span>
+            <span class="text-sm text-center max-w-[210px]">Quanto sua infraestrutura cresce por dia? Em quanto tempo será necessário investir em hardware?</span>
+          </div>
+        </div>
+        <!-- setting keys -->
+        <div class="flex flex-col text-center justify-start items-center bg-white p-12 rounded-3xl space-y-5 lg:w-96 lg:h-100">
+          <div class="flex mx-auto w-fit">
+            <img class="w-14 h-14" src="assets/icons/setting-keys.svg" />
+          </div>
+          <div class="flex flex-col space-y-5">
+            <span class="text-xl text-secondary">Configurações Chave</span>
+            <span class="text-sm text-center max-w-[230px]">Oferecemos conhecimentos específicos que somados a experiência nos indicam soluções altamente personalizadas, não disponíveis em livros ou treinamentos.</span>
+          </div>
+        </div>
+      </section>
+      <!-- text center below cards  -->
+      <section id="contact-form" class="flex flex-col justify-center items-center space-y-12 py-16">
+        <!-- description -->
+        <span class=" text-center text-2xl max-w-[650px]">
+          O <strong>assessment</strong> é a única ferramenta que além de entregar um retrato claro de como está o seu ambiente de tecnologia, te entrega um plano de ação prático.  
+        </span>
+        <a id="IWantAnAssessment" style="border-radius: 10px" class="alignedButtonText cursor-pointer shadow-icons flex items-center py-4 space-x-5 px-8 bg-primary text-md text-white  rounded-full">
+          <span>QUERO SOLICITAR UM ASSESSMENT PARA MINHA EMPRESA</span>
+          <i class="text-md text-white fa-solid fa-arrow-right"></i>
+        </a>
+      </section>
+    </main>
+    <!-- next section -->
+    <main class="relative flex flex-col space-y-20 bg-secondary p-8 pb-24 text-white rounded-4xl max-lg:space-y-8 items-center">
+      <!-- why do you must choose the netbrokers? -->
+      <section class="relative flex justify-center items-center w-full h-64">
+        <img class="absolute object-cover w-full h-full opacity-[0.4] backdrop-blur-lg" src="assets/images/business/cities.png" />
+        <span class="text-4xl z-0 max-w-xl max-lg:max-w-xs mt-10 text-center max-lg:text-2xl">Porquê a Netbrokers <span class="inline-block relative z-[1]">for Business<div class="w-[12.5rem] max-lg:w-[8.5rem] absolute left-0 bottom-[-0.1rem] border-b-[1rem] border-primary h-0 z-[-1]"></div></span></span>
+      </section>
+      <!-- reasons -->
+      <section class="w-full max-w-[1440px] lg:flex lg:justify-between max-lg:px-4 max-lg:space-y-16 lg:px-32">
+        <div class="lg:w-[20.5rem] flex flex-col space-y-8 items-start max-lg:items-center max-lg:space-y-4">
+          <img class="w-16 h-16" src="assets/icons/certificate.svg"/>
+          <span class="text-2xl font-medium max-lg:text-center max-lg:text-xl">Nós somos especialistas no que fazemos</span>
+          <span class="text-left text-lg max-lg:text-center font-regular">
+            Múltiplas habilidades técnicas, experiência prática e visão estratégica tornam a Netbrokers for Business a  melhor escolha quando o assunto é banco de dados. São mais de 127 certificações oficiais Microsoft.
+          </span>
+        </div>
+        <div class="lg:w-[23rem] flex flex-col space-y-8 items-start max-lg:items-center max-lg:space-y-4">
+          <img class="w-16 h-16" src="assets/icons/people.svg"/>
+          <span class="text-2xl font-medium max-lg:text-center max-lg:text-xl">Qualidade e Flexibilidade de tamanho da equipe</span>
+          <span class="text-left text-lg max-lg:text-center font-regular">
+            É extremamente difícil encontrar talentos no mercado, por este motivo nós formamos nossos profissionais e investimos milhares de reais nisso. Ajustamos recursos altamente qualificados que atendam as necessidades específicas do seu projeto, seja ele de curto ou longo prazo.
+          </span>
+        </div>
+        <div class="lg:w-[20rem] flex flex-col space-y-8 items-start max-lg:items-center max-lg:space-y-4">
+          <img class="w-16 h-16" src="assets/icons/lock.svg"/>
+          <span class="text-2xl font-medium max-lg:text-center max-lg:text-xl">Confidencialidade e Segurança de Dados</span>
+          <span class="text-left text-lg max-lg:text-center font-regular">
+            Nenhuma tarefa se quer é realizada sem a assinatura de um termo de confidencialidade entre as partes. De maneira formal e legal, garantimos que seus dados estão seguros.
+          </span>
+        </div>
+      </section>
+    </main>
+    <!-- next section -->
+    <main class="px-20 py-16 flex flex-col space-y-24 max-lg:px-4">
+      <!-- meet some people from netbrokers -->
+      <span class="mx-auto max-lg:text-2xl  max-lg:max-w-lg text-center text-4xl font-medium inline-block">Conheça alguns <div class="inline-block relative w-fit z-[1]">gestores <div class="absolute border-b-8 bottom-1 border-primary w-full z-[-1]"></div></div> que trabalham com a gente</span>
+      <section class="grid lg:grid-cols-3 gap-x-4 gap-y-20 text-secondary max-w-[1440px] mx-auto">
+        <div class="relative bg-white p-12 w-full rounded-4xl flex flex-col space-y-4 justify-center items-center">
+          <div class="absolute w-24 h-24 bg-primary rounded-full top-[-3rem]"></div>
+          <i class="text-primary fa-brands fa-linkedin-in"></i>
+          <div class="flex flex-col text-center">
+            <span class="text-xl font-medium">Alexandre Bianco</span>
+            <span class="text-sm w-1/2 mx-auto">CTO do Grupo LM Banco Volkswagen</span>
+          </div>
+          <span class="text-sm text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </span>
+        </div>
+        <div class="relative bg-white p-12 w-full rounded-4xl flex flex-col space-y-4 justify-center items-center">
+          <div class="absolute w-24 h-24 bg-primary rounded-full top-[-3rem]"></div>
+          <i class="text-primary fa-brands fa-linkedin-in"></i>
+          <div class="flex flex-col text-center">
+            <span class="text-xl font-medium">Alexandre Bianco</span>
+            <span class="text-sm w-1/2 mx-auto">CTO do Grupo LM Banco Volkswagen</span>
+          </div>
+          <span class="text-sm text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </span>
+        </div>
+        <div class="relative bg-white p-12 w-full rounded-4xl flex flex-col space-y-4 justify-center items-center">
+          <div class="absolute w-24 h-24 bg-primary rounded-full top-[-3rem]"></div>
+          <i class="text-primary fa-brands fa-linkedin-in"></i>
+          <div class="flex flex-col text-center">
+            <span class="text-xl font-medium">Alexandre Bianco</span>
+            <span class="text-sm w-1/2 mx-auto">CTO do Grupo LM Banco Volkswagen</span>
+          </div>
+          <span class="text-sm text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </span>
+        </div>
+        <div class="relative bg-white p-12 w-full rounded-4xl flex flex-col space-y-4 justify-center items-center">
+          <div class="absolute w-24 h-24 bg-primary rounded-full top-[-3rem]"></div>
+          <i class="text-primary fa-brands fa-linkedin-in"></i>
+          <div class="flex flex-col text-center">
+            <span class="text-xl font-medium">Alexandre Bianco</span>
+            <span class="text-sm w-1/2 mx-auto">CTO do Grupo LM Banco Volkswagen</span>
+          </div>
+          <span class="text-sm text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </span>
+        </div>
+        <div class="relative bg-white p-12 w-full rounded-4xl flex flex-col space-y-4 justify-center items-center">
+          <div class="absolute w-24 h-24 bg-primary rounded-full top-[-3rem]"></div>
+          <i class="text-primary fa-brands fa-linkedin-in"></i>
+          <div class="flex flex-col text-center">
+            <span class="text-xl font-medium">Alexandre Bianco</span>
+            <span class="text-sm w-1/2 mx-auto">CTO do Grupo LM Banco Volkswagen</span>
+          </div>
+          <span class="text-sm text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </span>
+        </div>
+        <div class="relative bg-white p-12 w-full rounded-4xl flex flex-col space-y-4 justify-center items-center">
+          <div class="absolute w-24 h-24 bg-primary rounded-full top-[-3rem]"></div>
+          <i class="text-primary fa-brands fa-linkedin-in"></i>
+          <div class="flex flex-col text-center">
+            <span class="text-xl font-medium">Alexandre Bianco</span>
+            <span class="text-sm w-1/2 mx-auto">CTO do Grupo LM Banco Volkswagen</span>
+          </div>
+          <span class="text-sm text-center">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </span>
+        </div>
+      </section>
+    </main>
+    <!-- next section -->
+    <main class="bg-cover relative flex justify-center items-center py-32 text-secondary max-lg:px-4">
+      <img class="absolute left-0 top-0 object-cover w-full h-full rounded-t-3xl z-[0]" src="assets/images/business/charles-forerunner.png" />
+      <img class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.73] rounded-t-3xl z-[0]" src="assets/images/business/BGsArtboard-2.png" />
+      <!-- card from -->
+      <div id="sendEmailCard" class="w-3/5 backdrop-sepia-0 bg-white/[0.9] lg:p-20 rounded-4xl space-y-16 max-lg:p-8 max-lg:w-full">
+        <!-- I want this service -->
+        <section class="flex justify-center px-6">
+            <span class="max-lg:text-2xl text-3xl max-w-xl text-center inline-block">Quero solicitar um <span class="inline-block relative z-[1]">Assessment<div class="w-[11rem] max-lg:w-[8.5rem] absolute left-[-0.25rem] bottom-1 border-b-[0.5rem] border-primary h-0 z-[-1]"></div></span> para minha empresa</span>
+        </section>
+        <!-- inputs -->
+        <form id="sendEmailForm" class="w-full flex flex-col items-center space-y-4">
+          <input required id="name" class="max-lg:text-center w-full px-4 py-2 border border-primary rounded-full bg-transparent text-secondary placeholder:text-secondary" placeholder="Nome do responsável"/>
+          <input required id="business_name" class="max-lg:text-center w-full px-4 py-2 border border-primary rounded-full bg-transparent text-secondary placeholder:text-secondary" placeholder="Nome da empresa"/>
+          <input required id="email" class="max-lg:text-center w-full px-4 py-2 border border-primary rounded-full bg-transparent text-secondary placeholder:text-secondary" placeholder="E-mail comercial"/>
+          <input required id="phone_number" class="max-lg:text-center w-full px-4 py-2 border border-primary rounded-full bg-transparent text-secondary placeholder:text-secondary" placeholder="WhatsApp comercial"/>
+          <select required id="technology" class="max-lg:text-center block w-full px-4 py-2 mb-6 text-secondary border border-primary rounded-full bg-transparent focus:ring-blue-500 focus:border-blue-500 placeholder-primary appearance-none lg:bg-arrow-bottom bg-[length:18px_18px] bg-[center_right_16px] bg-no-repeat">
+            <option value="Não informado">Qual tecnologia de banco de dados possui?</option>
+            <option value="SQL Server">SQL Server</option>
+            <option value="Outros">Outros</option>
+          </select>
+          <select required id="employees_number" class="max-lg:text-center block w-full px-4 py-2 mb-6 text-secondary border border-primary rounded-full bg-transparent focus:ring-blue-500 focus:border-blue-500 placeholder-primary appearance-none lg:bg-arrow-bottom bg-[length:18px_18px] bg-[center_right_16px] bg-no-repeat" >
+            <option value="Não informado">Quantos funcionários a empresa possui?</option>
+            <option value="Até 100">Até 100</option>
+            <option value="De 100 a 500">De 100 a 500</option>
+            <option value="De 500 a 100">De 500 a 100</option>
+            <option value="Acima de 1000">Acima de 1000</option>
+          </select>
+          <button type="submit" class="sendText cursor-pointer shadow-icons mt-4 h-12 flex w-fit max-lg:w-full items-center py-4 space-x-5 px-8 bg-primary text-md text-white rounded-full max-lg:text-2xl max-lg:justify-between" href="#">
+            <span>ENVIAR</span>
+            <i class="text-md text-white fa-solid fa-arrow-right"></i>
+          </button>
+        </form>
+      </div>
+    </main>
+    <footer class="absolute w-full bg-secondary p-20 pb-0 space-y-20 rounded-t-4xl mt-[-2rem] z-[13] max-lg:px-8 max-lg:pt-20 max-lg:space-y-10">
+      <section class="flex max-lg:flex-col lg:justify-between lg:items-center text-white max-lg:space-y-12">
+        <div class="flex items-center max-lg:px-12">
+          <img class="w-auto h-[52px]" src="assets/images/logo-rgb.png"/>
+        </div>
+        <ul class="text-sm space-y-2 max-lg:px-12">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Sobre</a></li>
+          <li><a href="#">Carreiras</a></li>
+          <li><a href="#">Para empresas</a></li>
+        </ul>
+        <ul class="text-sm space-y-2 max-lg:px-12">
+          <li><a href="business.html#contact-form">Entre em contato</a></li>
+          <li>
+            <div class="flex flex-col">
+              <span class="text-gray-500">Email</span>
+              <span>contato@netbrokers.com.br</span>
+            </div>
+          </li>
+          <li>
+            <div class="flex flex-col">
+              <span class="text-gray-500">WhatsApp</span>
+              <span>(11) 3871-1891</span>
+            </div>
+          </li>
+        </ul>
+        <div class="border flex flex-col lg:w-64 items-center border-primary space-y-8 p-8 rounded-3xl text-sm">
+          <span class="text-white">Acompanhe nossas redes sociais</span>
+          <div class="text-primary max-lg:text-2xl space-x-8">
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </section>
+      <section class="border-white py-4 border-t-[1px] flex max-lg:flex-col max-lg:items-center lg:justify-between text-white text-sm max-lg:space-y-4 text-center">
+        <span>© 2023 NETBROKRES | TODOS OS DIREITOS RESERVADOS</span>
+        <span>TERMOS E CONDIÇÕES</span>
+      </section>
+    </footer>
+  </body>
+</html>

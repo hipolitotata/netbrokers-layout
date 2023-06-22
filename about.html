@@ -1,0 +1,629 @@
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetBrokers</title>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (max-width: 720px) {
+        .mobile-image{
+          object-fit: cover !important;
+          aspect-ratio: 1 !important;
+        }
+
+        .responsive-text{
+          font-size: 1.5rem !important;
+          margin-bottom: 0 !important;
+        }
+      }
+    </style>
+
+    <!-- <link rel="stylesheet" href="/styles/styles.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CDNs -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <!-- setting the tailwind -->
+    <script>
+      tailwind.config = {
+        theme: {
+          fontFamily: {
+            sans: ['"DM Sans"'],
+          },
+          extend: {
+            colors: {
+              bgcolor: "#F1F1F1",
+              secondary: "#160C4B",
+              primary: "#00CBFA",
+              primaryfade: "#123774",
+              greenprimary: "#79C262",
+              offwhite: "#EFFCFF",
+            },
+            backgroundImage: {
+              "make-part-team":
+                "url('assets/images/course/make-part-team.png')",
+              "close-a-deal": "url('assets/images/course/close-a-deal.png')",
+            },
+            boxShadow: {
+              icons: "0px 3px 40px #00CBFA",
+              whats: "0px 3px 40px #79C262",
+            },
+            width: {
+              112: "28rem",
+              116: "29rem",
+              120: "30rem",
+              128: "32rem",
+              130: "34rem",
+              contentblue: "calc(100% + 16rem)",
+              locationtooltip: "calc(100% - 4rem)",
+            },
+            height: {
+              112: "28rem",
+              116: "29rem",
+              120: "30rem",
+              124: "31rem",
+              128: "32rem",
+              132: "33rem",
+              164: "46rem",
+              blueheight: "calc(100% + 16rem)",
+            },
+            padding: {
+              112: "28rem",
+              128: "32rem",
+            },
+            borderRadius: {
+              "4xl": "34px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="relative bg-bgcolor font-regular overflow-x-hidden">
+    <!-- header and navbar -->
+    <script src="scripts/navbar.js"></script>
+    <header class="w-full lg:px-40 absolute z-20 max-lg:px-8">
+      <nav
+        class="flex justify-between items-center max-lg:pt-6 max-w-[1440px] mx-auto pt-10"
+      >
+        <div class="max-xl:ml-0 lg:ml-[-72px] flex flex-column space-x-4">
+          <img
+            class="max-lg:w-[36px] max-lg:h-[35px] lg:w-[52px] lg:h-[48px]"
+            src="assets/images/logo.png"
+          />
+          <div class="flex items-center">
+            <img
+              class="w-auto max-lg:h-[24px] lg:h-[24px] object-contain"
+              src="assets/images/logo-name.svg"
+              height="auto"
+            />
+          </div>
+        </div>
+
+        <ul
+          class="max-xl:hidden flex flex-column justify-evenly text-white space-x-12 font-regular"
+        >
+          <li><a class="text-sm" href="index.html">CURSOS</a></li>
+          <li><a class="text-sm" href="about.html#experts">EXPERTS</a></li>
+          <li>
+            <a
+              class="text-sm border-b-[1px] border-primary pb-1 font-medium"
+              href="about.html"
+              >SOBRE</a
+            >
+          </li>
+          <li><a class="text-sm" href="#">CARREIRAS</a></li>
+          <li><a class="text-sm" href="business.html">PARA EMPRESAS</a></li>
+          <li>
+            <a class="text-xs bg-primary px-8 py-3 rounded-full" href="#"
+              >SOU ALUNO</a
+            >
+          </li>
+        </ul>
+
+        <div class="relative text-white xl:hidden">
+          <button id="btn-navbar-mobile">
+            <i class="text-4xl fa-solid fa-bars"></i>
+          </button>
+        </div>
+        <ul
+          class="xl:hidden absolute flex flex-col w-full h-auto text-white top-24 left-0 bg-secondary space-y-4 p-8 pt-4 drop-shadow-xl hidden z-10 font-regular md:px-20"
+          id="navcontrol-mobile"
+        >
+          <li><a class="text-sm" href="index.html">CURSOS</a></li>
+          <li><a class="text-sm" href="#experts">EXPERTS</a></li>
+          <li>
+            <a
+              class="text-sm border-l-2 pl-2 border-primary font-medium"
+              href="about.html"
+              >SOBRE</a
+            >
+          </li>
+          <li><a class="text-sm" href="#">CARREIRAS</a></li>
+          <li><a class="text-sm" href="business.html">PARA EMPRESAS</a></li>
+          <li>
+            <a class="text-[12px] bg-primary px-8 py-3 rounded-full" href="#"
+              >SOU ALUNO</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!-- whatsapp fixed button -->
+    <a
+      target="_blank"
+      href="https://wa.me/+551138711891"
+      class="fixed cursor-pointer flex justify-center items-center left-12 bottom-12 bg-[#25D366] text-4xl rounded-full w-12 h-12 p-2 shadow-whats z-20 max-lg:left-2 max-lg:bottom-2"
+    >
+      <i class="text-white fa-brands fa-whatsapp"></i>
+    </a>
+    <main
+      class="relative bg-secondary px-40 pt-48 text-white space-y-64 pb-16 rounded-b-4xl z-[1] max-lg:px-8 max-lg:space-y-32 overflow-x-hidden max-lg:pt-32"
+    >
+      <div class="flex flex-col max-w-[1440px] mx-auto space-y-28">
+        <span
+          class="font-medium text-4xl max-lg:max-w-xs max-w-sm mt-10 text-left max-lg:pl-24"
+          >Sobre
+          <span class="inline-block break-keep relative z-[1]"
+            >nós
+            <div
+              class="w-[4.25rem] absolute bottom-[0.25rem] left-[-0.25rem] bg-gradient-to-r from-primary to-greenprimary h-2 z-[-1]"
+            ></div></span
+        ></span>
+        <section
+          class="lg:grid lg:grid-cols-2 lg:gap-x-16 max-lg:flex max-lg:flex-col max-lg:space-y-8"
+        >
+          <div>
+            <img
+              class="mobile-image object-cover object-top rounded-4xl"
+              src="assets/images/about/team-photo.png"
+            />
+          </div>
+
+          <div
+            class="col-span-1 relative flex flex-col relative space-y-12 max-lg:pl-8 w-full"
+          >
+            <span class="responsive-text text-5xl max-w-xl font-regular max-lg:pl-16 mb-12">
+              Criada pela união de consultores com mais de dez anos de
+              experiência e certificações em produtos Microsoft®
+            </span>
+            <div
+              class="flex flex-col space-y-4 text-lg max-lg:pl-16 font-regular max-w-lg"
+            >
+              <span>
+                Serviços de desenvolvimento de sistemas, apoio à performance de
+                aplicações, dimensionamento e administração de estruturas de
+                banco de dados são alguns dos serviços com maior demanda atual.
+              </span>
+              <span>
+                Responsabilidade e comprometimento são fatores sempre presentes
+                em cada projeto e a inovação e alinhamento com as tecnologias de
+                mercado faz da Netbrokers uma das empresas mais dinâmicas do
+                mercado atual. Como meta, a Netbrokers procura direcionar seu
+                atendimento ao foco do seu negócio, estabelecendo um vínculo de
+                confiança em cada ação realizada e parcerias duradouras.
+              </span>
+              <strong>
+                Por sua experiência em consultoria, cada atividade é executada
+                com toda segurança e planejamento. Desta forma, potencializamos
+                o sucesso em cada projeto.
+              </strong>
+            </div>
+            <div
+              class="absolute top-[-12rem] lg:left-[-10rem] bg-gradient-to-b from-sky-700 to-primary w-screen h-blueheight z-[-1] rounded-3xl"
+            ></div>
+          </div>
+        </section>
+      </div>
+      <section
+        class="lg:flex w-full lg:space-x-4 justify-center max-lg:space-y-4 text-secondary"
+      >
+        <!-- mission -->
+        <div
+          class="flex flex-col text-center justify-start bg-white p-10 pb-16 rounded-4xl space-y-8 lg:w-96"
+        >
+          <div class="flex mx-auto w-fit">
+            <img class="w-14 h-14" src="assets/icons/mission.svg" />
+          </div>
+          <span class="text-2xl font-medium">Missão</span>
+          <span class="text-md"
+            >Oferecer ao cliente sempre as <br />
+            melhores opções em tecnologia <br />
+            visando estabelecer parcerias de longo <br />
+            prazo pela confiança e qualidade do <br />
+            trabalho desenvolvido.</span
+          >
+        </div>
+        <!-- vision -->
+        <div
+          class="flex flex-col bg-offwhite text-center justify-start p-10 pb-16 rounded-4xl space-y-8 lg:w-96"
+        >
+          <div class="flex mx-auto w-fit">
+            <img class="w-14 h-14" src="assets/icons/values.svg" />
+          </div>
+          <span class="text-2xl font-medium">Visão</span>
+          <span class="text-md"
+            >Criar ambiente de trabalho que <br />
+            propicie crescimento, incentive o <br />
+            mérito e realize premiação do <br />
+            esforço e inovação.</span
+          >
+        </div>
+        <!-- values -->
+        <div
+          class="flex flex-col text-center justify-start bg-white p-10 pb-16 rounded-4xl space-y-8 lg:w-96"
+        >
+          <div class="flex mx-auto w-fit">
+            <img class="w-16 h-16" src="assets/icons/vision.svg" />
+          </div>
+          <span class="text-2xl font-medium">Valores</span>
+          <div class="flex flex-col">
+            <span class="text-md">Respeito</span>
+            <span class="text-md">Qualidade</span>
+            <span class="text-md">Inovação</span>
+            <span class="text-md">Eficiência</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <main class="relative max-lg:mb-[0]">
+      <div
+        class="absolute h-[95%] max-lg:h-[75%] top-0 left-0 bg-gradient-to-tl mt-[-2rem] to-greenprimary from-primary w-full opacity-20 z-[-1]"
+      ></div>
+      <section class="w-full pt-16 px-40 space-y-24 max-lg:px-8">
+        <span
+          class="flex text-2xl mx-auto max-w-4xl text-center text-secondary font-regular"
+          >A Netbrokers foi criada em 2008 a partir da Dbex It Solutions através
+          da <br />
+          união de consultores especialistas com experiência e certificações em
+          <br />
+          produtos Microsoft, a empresa se renovou, reestruturou sua marca e
+          <br />
+          transformando-se hoje na Netbrokers.</span
+        >
+        <section
+          class="flex justify-center max-lg:items-center text-secondary lg:space-x-16 max-lg:flex-col max-lg:space-y-2"
+        >
+          <div class="flex flex-col relative items-center lg:space-x-2 w-96">
+            <span class="text-[100px] lg:text-[160px]">102</span>
+            <span class="text-2xl flex text-center"
+              >certificações <br />oficiais Microsoft</span
+            >
+          </div>
+          <div class="flex flex-col relative items-center lg:space-x-2 w-96">
+            <div
+              class="absolute lg:w-1 lg:h-full max-lg:h-1 max-lg:w-72 bg-gradient-to-b from-primary to-greenprimary lg:left-[-2rem] max-lg:left-1/2 max-lg:ml-[-9rem] max-lg:top-2"
+            ></div>
+            <span class="text-[100px] lg:text-[160px]">15</span>
+            <span class="text-2xl flex text-center"
+              >anos de<br />
+              operação</span
+            >
+            <div
+              class="absolute lg:w-1 lg:h-full max-lg:h-1 max-lg:w-72 bg-gradient-to-b from-primary to-greenprimary lg:right-[-2rem] max-lg:left-1/2 max-lg:ml-[-9rem] max-lg:bottom-[-1.5rem]"
+            ></div>
+          </div>
+          <div class="flex flex-col relative items-center lg:space-x-2 w-96">
+            <span class="text-[100px] lg:text-[160px]">185k</span>
+            <span class="text-2xl flex text-center"
+              >horas de consultoria <br />
+              especializada</span
+            >
+          </div>
+        </section>
+        <section
+          class="bg-white px-4 py-12 rounded-4xl max-w-[1440px] mx-auto text-center"
+        >
+          <span class="text-4xl max-lg:max-w-xs max-w-sm mt-10"
+            >Nossas
+            <span class="inline-block break-keep relative z-[1]"
+              >competências
+              <div
+                class="w-[15rem] absolute bottom-[0.25rem] left-0 bg-gradient-to-r from-primary to-greenprimary h-2 z-[-1]"
+              ></div></span
+          ></span>
+          <div class="grid lg:grid-cols-2 lg:px-28">
+            <div class="relative">
+              <div
+                class="absolute top-0 left-0 bg-white mix-blend-color w-full h-full"
+              ></div>
+              <img
+                class="w-full max-w-120 h-auto"
+                src="assets/images/about/microsoft-certified-part-one.png"
+              />
+            </div>
+            <div class="relative">
+              <div
+                class="absolute top-0 left-0 bg-white mix-blend-color w-full h-full"
+              ></div>
+              <img
+                class="w-full max-w-120 h-auto"
+                src="assets/images/about/microsoft-certified-part-two.png"
+              />
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+    <main
+      class="flex flex-col py-16 text-center px-40 items-center max-lg:px-8 space-y-24"
+    >
+      <span class="text-secondary text-4xl text-bold mt-12">Quem comprova</span>
+      <section
+        class="grid grid-cols-3 justify-center items-center gap-20 max-lg:grid-cols-2 max-lg:gap-4"
+      >
+        <img
+          class="w-40 lg:w-64 h-auto hover:opacity-70 object-cover justify-self-center"
+          src="assets/images/about/unidas-logo.png"
+        />
+        <img
+          class="w-40 lg:w-64 h-auto hover:opacity-70 object-cover justify-self-center"
+          src="assets/images/about/bridgestone-logo.png"
+        />
+        <img
+          class="w-40 lg:w-64 h-auto hover:opacity-70 object-cover justify-self-center"
+          src="assets/images/about/localiza-logo.png"
+        />
+        <img
+          class="w-64 h-auto hover:opacity-70 object-cover justify-self-center"
+          src="assets/images/about/lm-logo.png"
+        />
+        <img
+          class="w-40 h-auto hover:opacity-70 object-cover justify-self-center"
+          src="assets/images/about/besni-logo.png"
+        />
+        <img
+          class="w-40 lg:w-64 h-auto hover:opacity-70 object-cover justify-self-center"
+          src="assets/images/about/ouroverde-logo.png"
+        />
+        <img
+          class="w-20 h-auto hover:opacity-70 object-cover justify-self-center"
+          src="assets/images/about/volkswagen-logo.png"
+        />
+        <img
+          class="w-40 lg:w-64 h-auto hover:opacity-70 object-cover justify-self-center"
+          src="assets/images/about/carglass-logo.png"
+        />
+        <img
+          class="w-40 lg:w-64 h-auto hover:opacity-70 object-cover justify-self-center max-lg:col-span-2"
+          src="assets/images/about/eisa-logo.png"
+        />
+      </section>
+    </main>
+    <main
+      class="flex flex-col py-16 text-center px-40 items-center max-lg:px-8 space-y-12 flex flex-col items-center"
+    >
+      <span class="text-secondary text-3xl text-bold">Onde estamos</span>
+      <section
+        class="flex w-full justify-center text-secondary max-w-[1440px] mx-auto max-lg:flex-col-reverse max-lg:items-center lg:space-x-16"
+      >
+        <span class="font-medium text-3xl max-w-sm lg:text-left"
+          >Nosso escritório esta baseado no bairro da Barra Funda - Sâo Paulo,
+          em frente ao Allianz Park, próximo ao metrô Palmeiras Barra
+          Funda.</span
+        >
+        <div class="w-full max-w-xl relative flex justify-center max-lg:mb-16">
+          <img
+            class="max-xl:hidden w-full"
+            src="./assets/images/maps-desktop.png"
+          />
+          <img class="xl:hidden w-full" src="./assets/images/maps-mobile.png" />
+
+          <span
+            class="absolute bottom-[-2rem] left-[-28rem] z-10 bg-white p-6 lg:max-w-xl rounded-2xl max-lg:left-8 max-lg:w-locationtooltip font-medium text-xl max-lg:text-xs"
+          >
+            Av. Francisco Matarazzo, 175212º andar, conj 1213 - CEP
+            05001-200Barra Funda - São Paulo/SP - Brasil
+          </span>
+        </div>
+      </section>
+    </main>
+    <main
+      id="experts"
+      class="py-20 px-20 rounded-b-4xl space-y-24 max-lg:px-8 max-lg:space-y-12"
+    >
+      <section
+        class="flex flex-col items-center rounded-4xl text-secondary space-y-4"
+      >
+        <span class="text-4xl max-w-lg text-center font-medium text-secondary"
+          >Nossos
+          <span class="relative z-[1]"
+            >experts
+            <div
+              class="w-[8rem] absolute left-0 bg-gradient-to-l to-greenprimary from-primary h-2 top-[2rem] h-0 z-[-1]"
+            ></div></span
+        ></span>
+        <span class="max-w-5xl text-2xl text-center"
+          >São mais de 25 anos de experiência na Netbrokers construindo e <br />
+          aprimorando soluções em banco de dados.</span
+        >
+      </section>
+      <section
+        class="grid grid-cols-3 gap-x-24 gap-y-8 max-lg:gap-x-4 max-lg:grid-cols-2 max-w-[1440px] mx-auto"
+      >
+        <div class="flex flex-col w-full text-secondary text-center space-y-4">
+          <img
+            class="object-cover object-top border border-greenprimary bg-gray-200 h-80 rounded-4xl"
+            src="assets/images/team/fabricio.jpg"
+          />
+          <div class="flex flex-col">
+            <span class="text-2xl">FABRÌCIO RIBEIRO</span>
+            <span class="text-lg">Modelagem e Integrações</span>
+          </div>
+        </div>
+        <div class="flex flex-col w-full text-secondary text-center">
+          <div
+            class="flex flex-col w-full text-secondary text-center space-y-4"
+          >
+            <img
+              class="object-cover object-top border border-greenprimary bg-gray-200 h-80 rounded-4xl"
+              src="assets/images/team/renan.jpg"
+            />
+            <div class="flex flex-col">
+              <span class="text-2xl">RENAN BARBOSA</span>
+              <span class="text-lg">Administração de Banco de Dados</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col w-full text-secondary text-center">
+          <div
+            class="flex flex-col w-full text-secondary text-center space-y-4"
+          >
+            <img
+              class="object-cover object-top border border-greenprimary bg-gray-200 h-80 rounded-4xl"
+              src="assets/images/team/bruno.jpg"
+            />
+            <div class="flex flex-col">
+              <span class="text-2xl">BRUNO THOMÉ</span>
+              <span class="text-lg"
+                >Administração de Banco de Dados e Infraestrutura</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col w-full text-secondary text-center">
+          <div
+            class="flex flex-col w-full text-secondary text-center space-y-4"
+          >
+            <img
+              class="object-cover object-top border border-greenprimary bg-gray-200 h-80 rounded-4xl"
+              src="assets/images/team/rodrigo.jpg"
+            />
+            <div class="flex flex-col">
+              <span class="text-2xl">RODRIGO PARANÁ</span>
+              <span class="text-lg">Gerenciamento de Projetos</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col w-full text-secondary text-center">
+          <div
+            class="flex flex-col w-full text-secondary text-center space-y-4"
+          >
+            <img
+              class="object-cover object-top border border-greenprimary bg-gray-200 h-80 rounded-4xl"
+              src="assets/images/team/antonio.jpg"
+            />
+            <div class="flex flex-col">
+              <span class="text-2xl">ANTÔNIO FELICIANO</span>
+              <span class="text-lg">Arquitetura e Soluções</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <main
+      class="pb-20 pt-8 px-20 flex grid grid-cols-2 gap-x-8 max-lg:py-8 max-lg:pb-16 max-lg:flex max-lg:flex-col max-lg:px-8 max-lg:space-y-2 max-w-[1440px] mx-auto"
+    >
+      <div
+        class="bg-make-part-team bg-cover bg-center mix-blend-darken relative rounded-4xl overflow-hidden h-128 w-full rounded-4xl flex items-center"
+      >
+        <img
+          class="absolute top-0 left-0 w-full h-full opacity-85 z-[0]"
+          src="assets/images/course/overlayer-blue-to-green.png"
+        />
+        <div
+          class="mt-12 mx-auto flex flex-col items-center text-white max-w-sm text-center space-y-8 z-[1] px-4"
+        >
+          <span class="text-4xl"
+            >Faça parte do nosso time, confira as carreiras disponíveis.</span
+          >
+          <a class="cursor-pointer"
+            ><img
+              class="w-8 h-8"
+              src="assets/icons/arrow-right-small-white.svg"
+          /></a>
+        </div>
+      </div>
+      <div
+        class="bg-close-a-deal bg-cover bg-center mix-blend-darken relative rounded-4xl overflow-hidden h-128 w-full rounded-4xl flex items-center"
+      >
+        <img
+          class="absolute top-0 left-0 w-full h-full opacity-85 z-[0]"
+          src="assets/images/course/overlayer-blue-to-green.png"
+        />
+        <div
+          class="mt-12 mx-auto flex flex-col items-center text-white max-w-sm text-center space-y-8 z-[1] px-4"
+        >
+          <span class="text-4xl"
+            >Para empresas que buscam as melhores soluções em tecnologia.</span
+          >
+          <a class="cursor-pointer"
+            ><img
+              class="w-8 h-8"
+              src="assets/icons/arrow-right-small-white.svg"
+          /></a>
+        </div>
+      </div>
+    </main>
+    <footer
+      class="absolute w-full bg-secondary p-20 pb-0 space-y-20 rounded-t-4xl z-[13] max-lg:px-8 max-lg:pt-20 max-lg:space-y-10"
+    >
+      <section
+        class="flex max-lg:flex-col lg:justify-between lg:items-center text-white max-lg:space-y-12"
+      >
+        <div class="flex items-center max-lg:px-12">
+          <img class="w-auto h-[52px]" src="assets/images/logo-rgb.png" />
+        </div>
+        <ul class="text-sm space-y-2 max-lg:px-12">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Sobre</a></li>
+          <li><a href="#">Carreiras</a></li>
+          <li><a href="business.html">Para empresas</a></li>
+        </ul>
+        <ul class="text-sm space-y-2 max-lg:px-12">
+          <li><a href="business.html#contact-form">Entre em contato</a></li>
+          <li>
+            <div class="flex flex-col">
+              <span class="text-gray-500">Email</span>
+              <span>contato@netbrokers.com.br</span>
+            </div>
+          </li>
+          <li>
+            <div class="flex flex-col">
+              <span class="text-gray-500">WhatsApp</span>
+              <span>(11) 3871-1891</span>
+            </div>
+          </li>
+        </ul>
+        <div
+          class="border flex flex-col lg:w-72 items-center border-primary space-y-8 p-8 rounded-3xl text-sm"
+        >
+          <span class="text-white">Acompanhe nossas redes sociais</span>
+          <div class="text-primary max-lg:text-2xl space-x-8">
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </section>
+      <section
+        class="border-white py-4 border-t-[1px] flex max-lg:flex-col max-lg:items-center lg:justify-between text-white text-sm max-lg:space-y-4 text-center"
+      >
+        <span>© 2023 NETBROKRES | TODOS OS DIREITOS RESERVADOS</span>
+        <span>TERMOS E CONDIÇÕES</span>
+      </section>
+    </footer>
+  </body>
+</html>

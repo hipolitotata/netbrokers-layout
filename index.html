@@ -1,0 +1,606 @@
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+    <title>NetBrokers</title>
+
+    <!-- <link rel="stylesheet" href="/styles/styles.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @media (min-width: 1700px) {
+        .section-div{
+          max-width: 90% !important;
+        }
+
+        .responsive-title{
+          font-size: 2.55rem !important;
+          line-height: 1 !important;
+        }
+
+        .responsive-subtitle{
+          font-size: 1.55rem !important;
+        }
+      }
+
+      @media (min-width: 1800px) {
+        .section-div{
+          max-width: 85% !important;
+        }
+      }
+
+      @media (min-width: 1920px) {
+        .section-div{
+          max-width: 85% !important;
+        }
+      }
+
+      @media (min-width: 2500px) {
+        .section-div{
+          max-width: 76% !important;
+        }
+      }
+    </style>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          fontFamily: {
+            'sans': ['"DM Sans"'],
+          },
+          extend: {
+            colors: {
+              bgcolor: "#F1F1F1",
+              secondary: "#160C4B",
+              primary: "#79C262",
+              primarydark: "#5C944B",
+              primaryfade: "#123774",
+              blueprimary: "#00CBFA",
+              offwhite: "#EFFCFF",
+            },
+            backgroundImage: {
+              'arrow-bottom': "url('assets/icons/arrow-bottom.svg')",
+              'charles-forerunner': "url('assets/images/business/charles-forerunner.png')",
+              'pavel-danilyu': "url('assets/images/course/pexels-pavel-danilyu.png')",
+              'abstract-background': "url('assets/images/course/abstract-background.png')",
+              'cottonbro': "url('assets/images/course/cottonbro.png')",
+              'thisisengineer': "url('assets/images/course/thisisengineer.png')",
+              'cottonbro-studio': "url('assets/images/course/cottonbro-studio.png')",
+              'nubelson-fernandes': "url('assets/images/course/nubelson-fernandes.png')",
+              'artboard-gradient': "url('assets/images/course/Artboard-gradient.png')",
+              'team-photo': "url('assets/images/course/team-photo.png')",
+              'make-part-team': "url('assets/images/course/make-part-team.png')",
+              'close-a-deal': "url('assets/images/course/close-a-deal.png')"
+            },
+            boxShadow: {
+              'icons': '0px 3px 40px #79C26265',
+              'whats': '0px 3px 40px #79C262',
+              'white': '0px 3px 40px #FFFFFF'
+            },
+            width: {
+              '112': '28rem',
+              '128': '32rem',
+              '156': '39rem',
+              'contentdiv': 'calc(100vw - 10rem - 3.75rem)',
+            },
+            height: {
+              '100': '25rem', 
+              '108': '27rem', 
+              '112': '28rem',
+              '128': '32rem',
+            },
+            padding: {
+              '112': '28rem',
+              '128': '32rem',
+            },
+            borderRadius: {
+              '4xl': '34px'
+            },
+            inset: {
+              'center-icon': 'calc(50% - 2rem)',
+            },
+            gridTemplateColumns: {
+              '3-with-end-greater': '0.875fr 0.875fr 1.25fr',
+              '3-with-start-greater': '1.25fr 0.875fr 0.875fr'
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://kit.fontawesome.com/d3feab29a9.js" crossorigin="anonymous"></script>
+  </head>
+  <body class="relative bg-bgcolor font-regular overflow-x-hidden">
+    <!-- header and navbar -->
+    <script src="scripts/navbar.js"></script>
+    <header class="w-full lg:px-40 absolute z-20 max-lg:px-8">
+      <nav class="flex justify-between items-center max-lg:pt-6 max-w-[1440px] mx-auto pt-10">
+        <div class="max-xl:ml-0 lg:ml-[-72px] flex flex-column space-x-4">
+          <img class="max-lg:w-[36px] max-lg:h-[35px]  lg:w-[52px] lg:h-[48px]" src="assets/images/logo.png"/>
+          <div class="flex flex-col space-y-2">
+            <img class="w-auto max-lg:h-[24px] lg:h-[24px] object-contain" src="assets/images/logo-dark.png" height="auto"/>
+            <span class="max-lg:text-xs lg:text-sm text-primary font-regular tracking-[5.6px]">ACADEMY</span>
+          </div>
+        </div>
+
+        <ul class="max-xl:hidden flex flex-column justify-evenly text-secondary space-x-12 font-regular">
+          <li><a class="text-sm border-b-[2px] border-primary pb-1 font-medium" href="index.html">CURSOS</a></li>
+          <li><a class="text-sm" href="#experts">EXPERTS</a></li>
+          <li><a class="text-sm" href="about.html">SOBRE</a></li>
+          <li><a class="text-sm" href="#">CARREIRAS</a></li>
+          <li><a class="text-sm" href="business.html">PARA EMPRESAS</a></li>
+          <li><a class="text-xs bg-secondary px-8 text-white py-3 rounded-full" href="#">SOU ALUNO</a></li>
+        </ul>
+
+        <div class="relative text-secondary xl:hidden">
+          <button id="btn-navbar-mobile">
+           <i class="text-4xl fa-solid fa-bars"></i>
+          </button>
+        </div>
+        <ul class="xl:hidden absolute flex flex-col w-full h-auto text-secondary top-24 left-0 bg-bgcolor space-y-4 p-8 pt-4 drop-shadow-xl hidden z-10 font-regular md:px-20" id="navcontrol-mobile">
+          <li><a class="text-sm border-l-2 pl-2 border-primary font-medium" href="index.html">CURSOS</a></li>
+          <li><a class="text-sm" href="#experts">EXPERTS</a></li>
+          <li><a class="text-sm" href="about.html">SOBRE</a></li>
+          <li><a class="text-sm" href="#">CARREIRAS</a></li>
+          <li><a class="text-sm" href="business.html">PARA EMPRESAS</a></li>
+          <li><a class="text-[12px] bg-primary px-8 py-3 rounded-full" href="#">SOU ALUNO</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- whatsapp fixed button -->
+    <a       
+    target="_blank"
+    href="https://wa.me/+551138711891"
+    class="fixed cursor-pointer flex justify-center items-center left-12 bottom-12 bg-[#25D366] text-4xl rounded-full w-12 h-12 p-2 shadow-whats z-20">
+      <i class="text-white fa-brands fa-whatsapp"></i>
+    </a>
+
+    <main class="relative pb-0 pt-40 max-lg:pt-10 px-40 rounded-b-4xl text-secondary max-lg:px-8">
+    <!-- artboard absolute image -->
+      <img class="section-div absolute lg:w-contentdiv max-lg:w-full lg:h-[856px] xl:h-[900px] max-lg:h-[364px] left-0 top-0 rounded-br-[64px] lg:opacity-50 max-lg:opacity-100" src="assets/images/course/BGsArtboard.png"></img>
+      <!-- desktop -->
+      <section id="test" class="mx-auto grid grid-cols-2 relative pb-32 z-0 max-lg:hidden max-w-[1440px]">
+        <!-- div left side -->
+        <div class="flex-col space-y-12 pt-20">
+          <div class="xl:max-w-sm max-w-xs space-y-12 pr-2">
+            <!-- title -->
+            <span class="responsive-title text-4xl font-medium inline-block text-left tracking-normal">
+            Salários acima da média e vagas em <span class="inline-block relative z-[1]">todas<div class="w-[6rem] absolute left-0 bottom-[-0.1rem] border-b-[1rem] border-primary h-0 z-[-1]"></div></span> as empresas
+            </span>
+            <!-- description -->
+            <span class="responsive-subtitle text-xl flex">
+            Em 2022, a média salarial de profissionais de tecnologia atingiu o valor de R$12.147, quase 5x superior à média nacional, que é de R$ 2.569.
+            </span>
+          </div>
+
+          <!-- bottom "I want to know about it" -->
+          <a class="cursor-pointer text-white lg:w-100 w-fit ml-[-1rem] h-16 flex items-center py-4 px-8 bg-gradient-to-r from-primary to-blueprimary rounded-full space-x-12" href="#">
+            <span class="text-md">CONHEÇA NOSSA FORMAÇÃO</span>
+            <img class="w-16 h-auto" src="assets/icons/arrow.svg" />
+          </a>
+        </div>
+
+        <!-- image right side -->
+        <div class="bg-pavel-danilyu bg-cover bg-top bg-no-repeat w-full max-h-[632px] h-full xl:min-h-[565px] 2xl:min-h-[632px] bg-center rounded-4xl">
+          <div class="relative w-full h-full">
+
+            <!-- bottom toptip -->
+            <div class="absolute space-x-4 right-[-64px] bottom-28 w-fit h-fit flex items-center px-8 py-4 text-xl bg-white backdrop-blur-md rounded-full shadow-icons text-primary font-medium" href="#">
+            <span>iniciante</span>
+            <img class="w-12 h-auto" src="assets/icons/arrow-green.png" />
+            <span>especialista</span>
+            </div>
+
+            <!-- top toptip -->
+            <div class="absolute space-x-4 left-[-104px] top-20 w-fit h-fit flex items-center px-8 py-4 text-xl bg-white backdrop-blur-md rounded-full shadow-icons text-primary font-medium" href="#">
+            <span>Aprenda com os melhores</span>
+            </div>
+
+            <!-- left bottom check icon -->
+            <div class="absolute shadow-whats left-[-1.5rem] bottom-40 text-lg flex items-center justify-center p-2 w-12 h-12 text-white bg-primary rounded-full">
+            <i class="fa-solid fa-check"></i>
+            </div>
+
+            <!-- right top check icon -->
+            <div class="absolute shadow-whats right-[-1.5rem] top-40 text-lg flex items-center justify-center p-2 w-12 h-12 text-white bg-primary rounded-full">
+            <i class="fa-solid fa-check"></i>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <!-- mobile -->
+      <section class="flex flex-col mt-28 space-y-8 lg:hidden">
+        <div class="flex justify-center flex-col space-y-16 z-10">
+          <!-- title -->
+          <span class="mx-auto max-w-md text-3xl font-regular inline-block text-center tracking-normal">
+            Salários acima da média e vagas em <span class="inline-block relative z-[1]">todas<div class="w-[5rem] absolute left-0 bottom-1 border-b-[0.5rem] border-primary h-0 z-[-1]"></div></span> empresas
+          </span>
+          <!-- image below title -->
+          <div class="bg-pavel-danilyu bg-cover bg-no-repeat w-full h-[300px] bg-center rounded-4xl">
+            <div class="relative w-full h-full">
+
+              <!-- bottom toptip -->
+              <div class="absolute space-x-4 right-[-1rem] bottom-[-1rem] w-fit h-12 flex items-center px-4 text-xl bg-white backdrop-blur-md rounded-full shadow-icons text-primary" href="#">
+              <span>iniciante</span>
+              <img class="w-12 h-auto" src="assets/icons/arrow-green.png" />
+              <span>especialista</span>
+              </div>
+
+              <!-- top toptip -->
+              <div class="absolute space-x-4 left-[-1rem] top-[-1rem] w-fit h-12 flex items-center px-4 text-xl bg-white backdrop-blur-md rounded-full shadow-icons text-primary" href="#">
+              <span>Aprenda com os melhores</span>
+              </div>
+
+              <!-- left bottom check icon -->
+              <div class="absolute shadow-whats left-[-1.5rem] bottom-40 text-lg flex items-center justify-center p-2 w-12 h-12 text-white bg-primary rounded-full">
+              <i class="fa-solid fa-check"></i>
+              </div>
+
+              <!-- right top check icon -->
+              <div class="absolute shadow-whats right-[-1.5rem] top-40 text-lg flex items-center justify-center p-2 w-12 h-12 text-white bg-primary rounded-full">
+              <i class="fa-solid fa-check"></i>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- description -->
+        <span class="text-center">
+          Entenda por que você deveria concentrar sua equipe interna em tarefas estratégicas para o seu negócio enquanto delega funções críticas a especialistas.
+        </span>
+        <!-- bottom "I want to know about it" -->
+        <a class="mx-auto cursor-pointer text-white w-fit h-16 flex items-center py-4 px-8 bg-gradient-to-r from-primary to-blueprimary rounded-full" href="#">
+          <span>CONHEÇA NOSSA FORMAÇÃO</span>
+          <img class="w-16 h-auto" src="assets/icons/arrow.svg" />
+        </a>
+      </section>
+    </main>
+    <main class="relative mx-auto max-w-[1440px] flex flex-col justify-center items-center px-40 space-y-24 mt-16 max-lg:pb-16 text-secondary max-lg:px-8 lg:mb-16">
+      <section class="flex flex-col justify-center items-center space-y-4">
+        <div class="flex">
+          <span class="text-4xl max-w-lg mt-10 text-center">Conheça nossa <span class="relative z-[1]">formação <div class="w-[10rem] absolute left-0 bottom-1 border-b-[0.5rem] border-primary h-0 z-[-1]"></div></span></span>
+        </div>
+        <span class="w-4/5 text-center text-2xl font-regular">
+        A experiência dos profissionais de TI mais bem pagos do Brasil passo a passo para você. Comece do zero e traga um novo futuro para sua carreira.
+        </span>
+      </section>
+      <section class="relative rounded-4xl bg-primary w-full h-auto">
+        <div class="w-full h-full absolute top-0 left-0 z-[1]">
+          <img class="absolute object-cover object-center top-0 left-0 w-full h-full mix-blend-multiply rounded-4xl" src="assets/images/course/abstract-background.png"/>
+          <div class="absolute top-0 left-0 w-full h-full mix-blend-color rounded-4xl bg-primarydark"></div>
+          <img class="absolute opacity-100 top-0 left-0 w-full h-full rounded-4xl" src="assets/images/course/abstract-background/overlayer.png"/>
+        </div>
+        <div class="relative flex flex-col z-[2] items-center justify-center z-[2] w-full h-full left-0 top-0 p-16 pb-16 max-lg:p-8">
+          <div class="bg-white p-4 rounded-full w-fit max-lg:scale-[0.7]">
+            <span class="text-md text-primary">
+              ON DEMAND
+            </span>
+          </div>
+          <div class="lg:max-w-[42rem] flex flex-col items-center justify-center text-center space-y-4 text-white my-16">
+            <span class="text-2xl font-medium max-lg:text-md">SQL DATABASE SPECIALIST</span>
+            <span class="text-2xl max-lg:text-sm">Comece sua carreira como especialista do banco de dados presente em 98 das 100 maiores empresas do mundo.<br>Aulas gravadas para você estudar no seu próprio ritmo.</span>
+          </div>
+        </div>
+        <a class="absolute z-[1] cursor-pointer bg-white shadow-white w-16 h-16 rounded-full bottom-[-2rem] left-center-icon flex justify-center items-center">
+          <img class="w-8 h-8" src="assets/icons/arrow-right-small-green.svg"/>
+        </a>        
+      </section>
+    </main>
+    <!-- next section -->
+    <main class="relative flex flex-col bg-white p-8 pb-16 text-white rounded-2xl text-primary">
+      <div class="absolute z-[-1] left-0 top-[-12rem] bg-primary w-screen h-96 "></div>
+      <section class="mx-auto relative bg-cottonbro bg-cover flex flex-col justify-center items-center w-full h-108 rounded-2xl mb-20">
+        <img class="absolute object-fill mix-blend-darken bg-right top-0 left-0 w-full h-full rounded-3xl" src="assets/images/course/cottonbro-overlayers/overlayer-1.png" />
+        <img class="absolute object-fill mix-blend-color bg-right top-0 left-0 w-full h-full rounded-3xl" src="assets/images/course/cottonbro-overlayers/overlayer-2.png" />
+        <div class="flex flex-col space-y-5 px-8">
+          <span class="flex max-w-2xl text-center text-4xl font-medium w-fit z-[1] max-lg:text-2xl">
+            Apesar dos altos salários, há carência de profissionais de TI no Brasil
+          </span>
+          <span class="flex max-w-2xl text-center text-2xl font-light w-fit z-[1] max-lg:text-lg">
+            Uma estimativa aponta que serão 1 milhão de profissionais a menos do que vagas abertas até 2030.
+          </span>
+        </div>
+      </section>
+      <!-- reasons -->
+      <section class="mx-auto w-full max-w-[1440px] flex text-secondary">
+        <section class="w-full flex justify-between lg:space-x-8 max-lg:flex-col max-lg:space-y-8 lg:px-36">
+          <div class="lg:w-72 flex flex-col space-y-4 items-start max-lg:items-center max-lg:space-y-4">
+            <img class="w-16 h-16" src="assets/icons/responsability.svg"/>
+            <span class="text-2xl font-medium">Responsabilidade</span>
+            <span class="text-left text-md max-lg:text-center">
+              Os dados são de fundamental importância para qualquer negócio. Quanto maior a empresa, maior seráa quantidade de dados coletados, gerenciados e analisados.
+            </span>
+          </div>
+          <div class="lg:w-72 flex flex-col space-y-4 items-start max-lg:items-center max-lg:space-y-4">
+            <img class="w-16 h-16" src="assets/icons/high-demand.svg"/>
+            <span class="text-2xl font-medium">Alta demanda</span>
+            <span class="text-left text-md max-lg:text-center">
+              Com o crescimento das mídias digitais e da telefonia móvel, trabalhar com dados gerará cerca de 10 milhões de vagas de emprego ao longo dessa década, em todo o mundo.
+            </span>
+          </div>
+          <div class="lg:w-72 flex flex-col space-y-4 items-start max-lg:items-center max-lg:space-y-4">
+            <img class="w-16 h-16" src="assets/icons/flexability.svg"/>
+            <span class="text-2xl font-medium">Flexibilidade</span>
+            <span class="text-left text-md max-lg:text-center">
+              44% dos profissionais de TI <br> trabalham remotamente em todo o mundo, aliando estabilidade financeira à qualidade de vida.
+            </span>
+          </div>
+        </section>
+      </section>
+    </main>
+    <main class="bg-primary p-16 pt-20 mt-[-4rem] flex flex-col items-center text-white max-lg:px-8 max-lg:pb-56">
+      <section class="mt-12 w-full flex flex-col items-center space-y-6">
+        <span class="text-4xl max-w-2xl text-center">Cursos que ajudam você a construir uma carreira de <span class="relative z-[1]">sucesso <div class="w-[8.5rem] absolute left-0 bottom-1 border-b-[0.5rem] border-primarydark h-0 z-[-1]"></div></span></span>
+        <span class="text-2xl font-normal max-w-2xl text-center">Aqui você aprende do zero todas as habilidades necessárias para atuar como um profissional de tecnologia.</span>
+      </section>
+      <section class="flex flex-col w-full lg:space-y-4 mt-20 max-w-[1440px]">
+        <div class="grid grid-cols-3-with-end-greater gap-x-4 max-lg:flex max-lg:flex-col max-lg:space-y-4">
+          <div class="flex flex-col space-y-4 bg-primarydark w-full rounded-4xl p-10">
+            <div class="block bg-primary p-5 w-fit rounded-full shadow-icons">
+              <img class="w-12 h-12" src="assets/icons/study-on-rithm.svg" />
+            </div>
+            <span class="text-2xl font-medium">Estude no seu ritmo</span>
+            <span class="text-md font-regular">Aprenda em nossa plataforma digital no seu tempo e acompanhe cada passo da sua jornada.</span>
+          </div>
+          <div class="flex flex-col space-y-4 bg-primarydark w-full rounded-4xl p-10">
+            <div class="block bg-primary p-5 w-fit rounded-full shadow-icons">
+              <img class="w-12 h-12" src="assets/icons/connect-online.svg" />
+            </div>
+            <span class="text-2xl font-medium">Conecte-se ao vivo</span>
+            <span class="text-md">Participe, pergunte e interaja com os especialistas durante as mentorias online ao vivo.</span>
+          </div>
+          <div class="max-lg:hidden relative bg-thisisengineer bg-cover w-full rounded-4xl">
+            <img class="absolute object-fill mix-blend-color bg-right top-0 left-0 w-full h-full rounded-3xl" src="assets/images/course/overlayer-grid-image.png" />
+          </div>
+        </div>
+        <div class="grid grid-cols-3-with-start-greater gap-x-4 max-lg:flex max-lg:flex-col max-lg:space-y-4">
+          <div class="max-lg:hidden relative bg-cottonbro-studio bg-cover w-full rounded-4xl">
+            <img class="absolute object-fill mix-blend-color bg-right top-0 left-0 w-full h-full rounded-3xl" src="assets/images/course/overlayer-grid-image.png" />
+          </div>
+          <div class="flex flex-col space-y-4 bg-primarydark w-full rounded-4xl p-10">
+            <div class="block bg-primary p-5 w-fit rounded-full shadow-icons">
+              <img class="w-12 h-12" src="assets/icons/real-problems.svg" />
+            </div>
+            <span class="text-2xl font-medium">Problemas reais</span>
+            <span class="text-md">Teoria e prática alinhadas, estude e pratique com os desafios reais do dia a dia de um profissional de tecnologia.</span>
+          </div>
+          <div class="flex flex-col space-y-4 bg-primarydark w-full rounded-4xl p-10">
+            <div class="block bg-primary p-5 w-fit rounded-full shadow-icons">
+              <img class="w-10 h-10" src="assets/icons/experts.svg" />
+            </div>
+            <span class="text-2xl font-medium">Experts do mercado</span>
+            <span class="text-md">Aprenda com profissionais que gerenciam na prática os principais bancos de dados do Brasil.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <main class="relative mt-16 pb-32 z-0 max-w-[1440px] mx-auto grid grid-cols-2 pt-12 px-20 rounded-b-4xl text-secondary max-lg:hidden">
+      <!-- artboard absolute image -->
+      
+        <!-- div left side -->
+        <div class="flex-col space-y-12 pt-12">
+          <div class="max-w-lg space-y-16">
+            <!-- title -->
+            <span class="text-4xl max-w-xl text-center font-medium">Pra <span class="relative z-[1]">quem<div class="w-[5rem] absolute left-0 bottom-1 border-b-[0.5rem] border-primary h-0 z-[-1]"></div></span> é?</span>
+            <!-- description -->
+            <ul class="text-3xl space-y-16">
+              <li class="border-l-8 border-primary pl-6">
+                <span>Jovens que buscam a primeira oportunidade de emprego</span>
+              </li>
+              <li class="border-l-8 border-primary pl-6">
+                <span>Pessoas em transição <br>de carreira</span>
+              </li>
+              <li class="border-l-8 border-primary pl-6">
+                <span>Profissionais em busca de aperfeiçoamento</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+  
+        <!-- image right side -->
+        <div class="relative bg-nubelson-fernandes bg-cover bg-center bg-no-repeat w-full h-[560px] rounded-4xl">
+          <img class="absolute object-fill mix-blend-color bg-right top-0 left-0 w-full h-full rounded-3xl" src="assets/images/course/overlayer-grid-image.png" />
+          <div class="relative w-full h-full">
+  
+            <!-- bottom toptip -->
+            <div class="absolute space-x-4 left-[-104px] bottom-20 w-fit h-fit flex items-center px-12 py-4 text-xl bg-white backdrop-blur-md rounded-full shadow-icons text-primary font-medium" href="#">
+              <span>Curso prático</span>
+            </div>
+  
+            <!-- top toptip -->
+            <div class="absolute space-x-4 right-[-2rem] bottom-1/2 w-fit h-fit flex items-center px-8 py-4 text-xl bg-white backdrop-blur-md rounded-full shadow-icons text-primary font-medium" href="#">
+              <span>Muito aprendizado</span>
+            </div>
+  
+            <!-- left bottom check icon -->
+            <div class="absolute shadow-whats left-[-1.5rem] top-10 text-lg flex items-center justify-center p-2 w-12 h-12 text-white bg-primary rounded-full">
+              <i class="fa-solid fa-check"></i>
+            </div>
+  
+            <!-- right top check icon -->
+            <div class="absolute shadow-whats right-[-1.5rem] bottom-10 text-lg flex items-center justify-center p-2 w-12 h-12 text-white bg-primary rounded-full">
+              <i class="fa-solid fa-check"></i>
+            </div>
+  
+          </div>
+        </div>
+    </main>
+    <main class="px-8 rounded-b-4xl text-secondary lg:hidden">
+      <!-- artboard absolute image -->
+      <section class="relative mt-16 pb-32 z-0 max-w-[1440px] mx-auto">
+        <!-- image top side -->
+        <div class="bg-nubelson-fernandes bg-cover bg-center bg-no-repeat w-full h-[400px] absolute right-0 top-[-16rem] rounded-4xl">
+          <img class="absolute object-fill mix-blend-color bg-right top-0 left-0 w-full h-full rounded-3xl" src="assets/images/course/overlayer-grid-image.png" />
+          <div class="relative w-full h-full">
+  
+            <!-- top toptip -->
+            <div class="absolute space-x-4 left-[-1rem] top-20 w-fit h-12 flex items-center px-4 text-xl font-bold bg-white backdrop-blur-md rounded-full shadow-icons text-primary max-lg:top-10" href="#">
+              <span>Cursos práticos</span>
+            </div>
+
+            <!-- bottom toptip -->
+            <div class="absolute space-x-4 right-[-1rem] bottom-20 w-fit h-12 flex items-center px-4 text-xl font-bold bg-white backdrop-blur-md rounded-full shadow-icons text-primary max-lg:bottom-10" href="#">
+              <span>Muito aprendizado</span>
+            </div>
+  
+            <!-- left bottom check icon -->
+            <div class="absolute shadow-whats left-[-1.5rem] bottom-20 text-lg flex items-center justify-center p-2 w-12 h-12 text-white bg-primary rounded-full">
+              <i class="fa-solid fa-check"></i>
+            </div>
+          </div>
+        </div>
+        <div class="flex-col space-y-12 pt-[12rem]">
+          <div class="space-y-16 text-center">
+            <!-- title -->
+            <span class="inline-block text-3xl font-medium">Pra <span class="relative z-[1]">quem<div class="w-[5rem] absolute left-0 bottom-1 border-b-[0.5rem] border-primary h-0 z-[-1]"></div></span> é?</span>
+            <!-- description -->
+            <ul class="text-3xl space-y-16 text-left">
+              <li class="flex border-l-8 border-primary pl-12 max-lg:w-full">
+                <span>Jovens que buscam a primeira oportunidade de emprego</span>
+              </li>
+              <li class="flex border-l-8 border-primary pl-12">
+                <span>Pessoas em transição de carreira</span>
+              </li>
+              <li class="flex border-l-8 border-primary pl-12">
+                <span>Profissionais em busca de aperfeiçoamento</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <main class="px-20 rounded-b-4xl max-lg:px-8">
+      <section class="bg-artboard-gradient bg-cover flex flex-col items-center py-16 lg:px-40 rounded-4xl text-white space-y-2 max-w-[1440px] mx-auto max-lg:px-8">
+        <span class="text-[60px] text-primary">“</span>
+        <div class="flex flex-col items-center space-y-20">
+          <span class="text-5xl text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+          <span class="text-3xl relative z-[1]">Fulano ciclano<div class="inline-block w-[12.5rem] absolute left-0 bottom-1 border-b-[0.5rem] border-primary h-0 z-[-1]"></div></span>
+        </div>
+      </section>
+    </main>
+    <main id="experts" class="py-20 px-20 rounded-b-4xl space-y-24 max-lg:px-8 max-lg:space-y-12">
+      <section class="flex flex-col items-center rounded-4xl text-secondary space-y-4">
+        <span class="text-4xl max-w-lg text-center font-medium text-secondary">Nossos <span class="relative z-[1]">experts<div class="w-[7.75rem] absolute left-0 bottom-1 border-b-[0.5rem] border-primary h-0 z-[-1]"></div></span></span>
+        <span class="max-w-[60rem] text-2xl text-center">Estude com alguns dos melhores especialistas em TI. São mais de 25 anos de experiência na Netbrokers construindo e aprimorando soluções em banco de dados.</span>
+      </section>
+      <section class="grid grid-cols-3 gap-x-24 gap-y-8 max-lg:gap-x-4 max-lg:grid-cols-2 max-w-[1440px] mx-auto">
+        <div class="flex flex-col w-full text-secondary text-center space-y-4">
+        <img class="object-cover object-top border border-primary bg-gray-200 h-80 rounded-4xl" src="assets/images/team/fabricio.jpg" />
+        <div class="flex flex-col">
+          <span class="text-2xl">FABRÌCIO RIBEIRO</span>
+          <span class="text-lg">Modelagem e Integrações</span>
+        </div>
+        </div>
+        <div class="flex flex-col w-full text-secondary text-center">
+        <div class="flex flex-col w-full text-secondary text-center space-y-4">
+          <img class="object-cover object-top border border-primary bg-gray-200 h-80 rounded-4xl" src="assets/images/team/renan.jpg" />
+          <div class="flex flex-col">
+          <span class="text-2xl">RENAN BARBOSA</span>
+          <span class="text-lg">Administração de Banco de Dados</span>
+          </div>
+        </div>
+        </div>
+        <div class="flex flex-col w-full text-secondary text-center">
+        <div class="flex flex-col w-full text-secondary text-center space-y-4">
+          <img class="object-cover object-top border border-primary bg-gray-200 h-80 rounded-4xl" src="assets/images/team/bruno.jpg" />
+          <div class="flex flex-col">
+          <span class="text-2xl">BRUNO THOMÉ</span>
+          <span class="text-lg">Administração de Banco de Dados e Infraestrutura</span>
+          </div>
+        </div>
+        </div>
+        <div class="flex flex-col w-full text-secondary text-center">
+        <div class="flex flex-col w-full text-secondary text-center space-y-4">
+          <img class="object-cover object-top border border-primary bg-gray-200 h-80 rounded-4xl" src="assets/images/team/rodrigo.jpg" />
+          <div class="flex flex-col">
+          <span class="text-2xl">RODRIGO PARANÁ</span>
+          <span class="text-lg">Gerenciamento de Projetos</span>
+          </div>
+        </div>
+        </div>
+        <div class="flex flex-col w-full text-secondary text-center">
+        <div class="flex flex-col w-full text-secondary text-center space-y-4">
+          <img class="object-cover object-top border border-primary bg-gray-200 h-80 rounded-4xl" src="assets/images/team/antonio.jpg" />
+          <div class="flex flex-col">
+          <span class="text-2xl">ANTÔNIO FELICIANO</span>
+          <span class="text-lg">Arquitetura e Soluções</span>
+          </div>
+        </div>
+        </div>
+      </section>
+    </main>
+    <!-- <main class="flex lg:space-x-24 bg-secondary p-8 rounded-4xl max-lg:flex-col max-lg:space-y-8">
+      <img class="lg:w-156  xl:w-1/2 max-w-[65rem] h-auto rounded-4xl object-center object-cover" src="assets/images/about/team-photo.png" />
+      <div class="flex max-w-lg xl:max-w-4xl flex-col justify-center max-lg:items-center space-y-16 text-white max-lg:text-center max-lg:mx-auto max-lg:pb-12">
+        <span class="text-5xl relative z-[1] max-lg:text-4xl font-medium">Sobre nós<div class="w-[15rem] max-lg:w-[10rem] absolute left-0 bottom-[-0.1rem] border-b-[0.75rem] border-primarydark h-0 z-[-1]"></div></span></span>
+        <span class="text-left text-2xl max-lg:text-center max-lg:text-3xl font-regular">Formamos profissionais prontos para o mercado<br> de trabalho e somos responsáveis por entregar as<br> melhores soluções em tecnologia visando <br> estabelecer parcerias a longo prazo.</span>
+        <a class="text-white text-2xl bg-primary px-8 py-3 rounded-full w-fit max-lg:text-2xl" href="#">ENTRE EM CONTATO</a>
+      </div>
+    </main> -->
+    <main class="py-20 px-20 flex grid grid-cols-2 gap-x-8 max-lg:py-8 max-lg:pb-16 max-lg:flex max-lg:flex-col max-lg:px-8 max-lg:space-y-2 max-w-[1440px] mx-auto">
+      <div class="bg-make-part-team bg-cover bg-center mix-blend-darken relative rounded-4xl overflow-hidden h-112 w-full rounded-4xl flex items-center">
+        <img class="absolute top-0 left-0 w-full h-full opacity-85 z-[0]" src="assets/images/course/overlayer-blue-to-green.png"/>
+        <div class="mt-12 mx-auto flex flex-col items-center text-white max-w-sm text-center space-y-8 z-[1] px-4">
+          <span class="text-4xl">Faça parte do nosso time, confira as carreiras disponíveis.</span>
+          <a class="cursor-pointer"><img class="w-8 h-8" src="assets/icons/arrow-right-small-white.svg"/></a>
+        </div>
+      </div>
+      <div class="bg-close-a-deal bg-cover bg-center mix-blend-darken relative rounded-4xl overflow-hidden h-112 w-full rounded-4xl flex items-center">
+        <img class="absolute top-0 left-0 w-full h-full opacity-85 z-[0]" src="assets/images/course/overlayer-blue-to-green.png"/>
+        <div class="mt-12 mx-auto flex flex-col items-center text-white max-w-sm text-center space-y-8 z-[1] px-4">
+          <span class="text-4xl">Para empresas que buscam as melhores soluções em tecnologia.</span>
+          <a class="cursor-pointer"><img class="w-8 h-8" src="assets/icons/arrow-right-small-white.svg"/></a>
+        </div>
+      </div>
+    </main>
+    <footer class="absolute w-full bg-secondary p-20 pb-0 space-y-20 rounded-t-4xl z-[13] max-lg:px-8 max-lg:pt-20 max-lg:space-y-10">
+      <section class="flex max-lg:flex-col lg:justify-between lg:items-center text-white max-lg:space-y-12">
+        <div class="flex items-center max-lg:px-12">
+          <img class="w-auto h-[52px]" src="assets/images/logo-rgb.png"/>
+        </div>
+        <ul class="text-sm space-y-2 max-lg:px-12">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">Sobre</a></li>
+          <li><a href="#">Carreiras</a></li>
+          <li><a href="business.html">Para empresas</a></li>
+        </ul>
+        <ul class="text-sm space-y-2 max-lg:px-12">
+          <li><a href="business.html#contact-form">Entre em contato</a></li>
+          <li>
+            <div class="flex flex-col">
+              <span class="text-gray-500">Email</span>
+              <span>contato@netbrokers.com.br</span>
+            </div>
+          </li>
+          <li>
+            <div class="flex flex-col">
+              <span class="text-gray-500">WhatsApp</span>
+              <span>(11) 3871-1891</span>
+            </div>
+          </li>
+        </ul>
+        <div class="border flex flex-col lg:w-72 items-center border-blueprimary space-y-8 p-8 rounded-3xl text-sm">
+          <span class="text-white">Acompanhe nossas redes sociais</span>
+          <div class="text-blueprimary max-lg:text-2xl space-x-8">
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </section>
+      <section class="border-white py-4 border-t-[1px] flex max-lg:flex-col max-lg:items-center lg:justify-between text-white text-sm max-lg:space-y-4 text-center">
+        <span>© 2023 NETBROKRES | TODOS OS DIREITOS RESERVADOS</span>
+        <span>TERMOS E CONDIÇÕES</span>
+      </section>
+    </footer>
+  </body>
+</html>
